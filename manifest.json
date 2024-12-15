@@ -1,0 +1,12 @@
+{
+    "domain": "heizung_control",
+    "name": "Heizung Control",
+    "documentation": "https://github.com/yourusername/heizung_control",
+    "dependencies": [
+        "mqtt"
+    ],
+    "codeowners": [],
+    "requirements": [],
+    "iot_class": "local_push",
+    "version": "1.0.0"
+}
