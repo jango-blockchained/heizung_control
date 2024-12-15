@@ -1,4 +1,4 @@
-"""Switch platform for Heizung Control."""
+"""Switch platform for Climate Control."""
 import logging
 from typing import Any
 
@@ -12,8 +12,8 @@ from . import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-MQTT_STATE_TOPIC = "home/switch/heizung/state"
-MQTT_COMMAND_TOPIC = "home/switch/heizung/set"
+MQTT_STATE_TOPIC = "home/switch/climate/state"
+MQTT_COMMAND_TOPIC = "home/switch/climate/set"
 
 async def async_setup_platform(
     hass: HomeAssistant,
@@ -21,14 +21,14 @@ async def async_setup_platform(
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
-    """Set up the Heizung switch."""
-    add_entities([HeizungSwitch(hass)])
+    """Set up the Climate switch."""
+    add_entities([ClimateSwitch(hass)])
 
-class HeizungSwitch(SwitchEntity):
-    """Representation of a Heizung switch."""
+class ClimateSwitch(SwitchEntity):
+    """Representation of a Climate switch."""
 
-    _attr_name = "Heizung"
-    _attr_unique_id = "heizung_switch"
+    _attr_name = "Climate"
+    _attr_unique_id = "climate_switch"
 
     def __init__(self, hass: HomeAssistant) -> None:
         """Initialize the switch."""

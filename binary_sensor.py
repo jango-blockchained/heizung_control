@@ -1,4 +1,4 @@
-"""Binary sensor platform for Heizung Control."""
+"""Binary sensor platform for Climate Control."""
 from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
     BinarySensorDeviceClass,
@@ -7,11 +7,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 from homeassistant.helpers.event import async_track_state_change
-from homeassistant.const import STATE_ON, STATE_OFF
 
-from . import DOMAIN
-
-CLIMATE_GROUP = "group.heizung_climates"
+CLIMATE_GROUP = "group.climate_devices"
 
 async def async_setup_platform(
     hass: HomeAssistant,
@@ -19,15 +16,15 @@ async def async_setup_platform(
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
-    """Set up the Heizung binary sensor."""
-    add_entities([HeizungActiveSensor(hass)])
+    """Set up the Climate binary sensor."""
+    add_entities([ClimateActiveSensor(hass)])
 
-class HeizungActiveSensor(BinarySensorEntity):
+class ClimateActiveSensor(BinarySensorEntity):
     """Binary sensor that monitors if any climate device is active."""
 
-    _attr_name = "Heizung Active"
+    _attr_name = "Climate Active"
     _attr_device_class = BinarySensorDeviceClass.RUNNING
-    _attr_unique_id = "heizung_active_sensor"
+    _attr_unique_id = "climate_active_sensor"
     
     def __init__(self, hass: HomeAssistant) -> None:
         """Initialize the sensor."""
@@ -46,7 +43,9 @@ class HeizungActiveSensor(BinarySensorEntity):
                 self.hass, climate_entities, self._handle_climate_state_change
             )
 
-    async def _handle_climate_state_change(self, entity_id, old_state, new_state):
+    async def _handle_climate_state_change(
+        self, entity_id, old_state, new_state
+    ):
         """Handle climate state changes."""
         await self.async_update()
 
@@ -65,4 +64,4 @@ class HeizungActiveSensor(BinarySensorEntity):
             if state and state.state not in ["off", "idle"]:
                 active_climates.append(entity_id)
 
-        self._attr_is_on = len(active_climates) > 0 
+        self._attr_is_on = len(active_climates) > 0

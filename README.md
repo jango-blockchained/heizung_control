@@ -1,6 +1,6 @@
-# Heizung Control Integration for Home Assistant
+# Climate Control Integration for Home Assistant
 
-This custom integration manages heating control by monitoring a group of climate entities and controlling an MQTT switch based on their state.
+This custom integration manages climate control by monitoring a group of climate entities and controlling an MQTT switch based on their state.
 
 ## Features
 
@@ -10,22 +10,22 @@ This custom integration manages heating control by monitoring a group of climate
 
 ## Installation
 
-1. Copy the `heizung_control` folder to your `custom_components` directory
+1. Copy the `climate_control` folder to your `custom_components` directory
 2. Restart Home Assistant
 3. The integration will automatically set up the following entities:
-   - `binary_sensor.heizung_active`: Indicates if any climate device is active
-   - `switch.heizung`: MQTT switch that controls the heating system
+   - `binary_sensor.climate_active`: Indicates if any climate device is active
+   - `switch.climate`: MQTT switch that controls the climate system
 
 ## Configuration
 
 The integration uses the following MQTT topics:
-- State Topic: `home/switch/heizung/state`
-- Command Topic: `home/switch/heizung/set`
+- State Topic: `home/switch/climate/state`
+- Command Topic: `home/switch/climate/set`
 
 The integration expects the following climate entities to be available in a group:
-- `climate.heizung_links_wohnzimmer`
-- `climate.heizung_rechts_wohnzimmer`
-- `climate.heizung_küche`
+- `climate.living_room_left`
+- `climate.living_room_right`
+- `climate.kitchen`
 
 ## How it Works
 
@@ -38,4 +38,4 @@ The integration expects the following climate entities to be available in a grou
 
 - Home Assistant
 - MQTT integration set up and configured
-- Climate entities configured and working 
+- Climate entities configured and working

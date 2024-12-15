@@ -1,4 +1,4 @@
-"""The Heizung Control integration."""
+"""The Climate Control integration."""
 import logging
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
@@ -6,13 +6,13 @@ from homeassistant.const import Platform
 
 from .automation import setup_automations
 
-DOMAIN = "heizung_control"
+DOMAIN = "climate_control"
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS = [Platform.BINARY_SENSOR, Platform.SWITCH, Platform.GROUP]
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up the Heizung Control component."""
+    """Set up the Climate Control component."""
     hass.data[DOMAIN] = {}
     
     await hass.helpers.discovery.async_load_platform(

@@ -1,10 +1,11 @@
-"""Automation handling for Heizung Control."""
+"""Automation handling for Climate Control."""
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.event import async_track_state_change
-from homeassistant.const import STATE_ON, STATE_OFF
+from homeassistant.const import STATE_ON
+
 
 async def setup_automations(hass: HomeAssistant) -> None:
-    """Set up the automations for Heizung Control."""
+    """Set up the automations for Climate Control."""
     
     async def handle_binary_sensor_change(entity_id, old_state, new_state):
         """Handle changes to the binary sensor state."""
@@ -13,15 +14,15 @@ async def setup_automations(hass: HomeAssistant) -> None:
 
         if new_state.state == STATE_ON:
             await hass.services.async_call(
-                "switch", "turn_on", {"entity_id": "switch.heizung"}
+                "switch", "turn_on", {"entity_id": "switch.climate"}
             )
         else:
             await hass.services.async_call(
-                "switch", "turn_off", {"entity_id": "switch.heizung"}
+                "switch", "turn_off", {"entity_id": "switch.climate"}
             )
 
     async_track_state_change(
         hass,
-        "binary_sensor.heizung_active",
+        "binary_sensor.climate_active",
         handle_binary_sensor_change
     ) 
