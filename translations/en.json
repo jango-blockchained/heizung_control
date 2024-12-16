@@ -1,0 +1,65 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Set up Climate Control",
+                "description": "Configure MQTT topics for your climate control device",
+                "data": {
+                    "name": "Device Name",
+                    "mode_command_topic": "Mode Command Topic",
+                    "mode_state_topic": "Mode State Topic",
+                    "temperature_command_topic": "Temperature Command Topic",
+                    "temperature_state_topic": "Temperature State Topic",
+                    "current_temperature_topic": "Current Temperature Topic",
+                    "power_command_topic": "Power Command Topic (Optional)",
+                    "power_state_topic": "Power State Topic (Optional)",
+                    "fan_mode_command_topic": "Fan Mode Command Topic (Optional)",
+                    "fan_mode_state_topic": "Fan Mode State Topic (Optional)"
+                }
+            },
+            "climate": {
+                "title": "Climate Settings",
+                "description": "Configure temperature settings and control options",
+                "data": {
+                    "min_temp": "Minimum Temperature",
+                    "max_temp": "Maximum Temperature",
+                    "temp_step": "Temperature Step",
+                    "precision": "Temperature Precision"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Failed to connect",
+            "invalid_topic": "Invalid MQTT topic format",
+            "topic_not_exist": "One or more MQTT topics are not accessible",
+            "mqtt_unavailable": "MQTT integration is not configured",
+            "unknown": "Unexpected error occurred",
+            "min_temp_higher": "Minimum temperature must be lower than maximum temperature",
+            "invalid_temp_step": "Temperature step must be greater than 0",
+            "invalid_precision": "Temperature precision must be greater than 0"
+        },
+        "abort": {
+            "already_configured": "Device is already configured"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Climate Control Options",
+                "description": "Modify your climate control settings",
+                "data": {
+                    "min_temp": "Minimum Temperature",
+                    "max_temp": "Maximum Temperature",
+                    "temp_step": "Temperature Step",
+                    "precision": "Temperature Precision"
+                }
+            }
+        },
+        "error": {
+            "min_temp_higher": "Minimum temperature must be lower than maximum temperature",
+            "invalid_temp_step": "Temperature step must be greater than 0",
+            "invalid_precision": "Temperature precision must be greater than 0",
+            "unknown": "Unexpected error occurred"
+        }
+    }
+}

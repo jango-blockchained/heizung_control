@@ -1,7 +1,7 @@
 {
     "domain": "climate_control",
     "name": "Climate Control",
-    "documentation": "https://github.com/yourusername/climate_control",
+    "documentation": "https://github.com/jango-blockchained/climate_control",
     "dependencies": [
         "mqtt"
     ],
